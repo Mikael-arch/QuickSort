@@ -4,33 +4,38 @@
 int particionar(int *vetor, int inicial, int final)
 {
 
-    int pivot = inicial + (final - inicial) / 2;
+    int pivot = vetor[inicial + (final - inicial) / 2];
+    
+    int i = inicial - 1;
+    int j = final + 1;
 
-    while (inicial < final)
+    while (1)
     {
-        while (inicial < final && vetor[inicial] <= vetor[pivot])
-        {
-            inicial++;
-        }
-        while (inicial < final && vetor[final] > vetor[pivot])
-        {
-            final--;
+        do {
+            i++;
+        } while (vetor[i] < pivot);
+
+        do {
+            j--;
+        } while (vetor[j] > pivot);
+
+        if(i>=j){
+            return j;
         }
 
-        int aux = vetor[inicial];
-        vetor[inicial] = vetor[final];
-        vetor[final] = aux;
+        int aux = vetor[i];
+        vetor[i] = vetor[j];
+        vetor[j] = aux;
     }
-    return inicial;
 }
 
-void quicksort_crescente(int *vetor, int inicial, int final)
+void quicksort(int *vetor, int inicial, int final)
 {
     if (inicial < final)
     {
         int posi = particionar(vetor, inicial, final);
 
-        quicksort_crescente(vetor, inicial, posi - 1);
-        quicksort_crescente(vetor, posi, final);
+        quicksort(vetor, inicial, posi);
+        quicksort(vetor, posi + 1, final);
     }
 }
