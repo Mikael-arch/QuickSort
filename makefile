@@ -27,8 +27,8 @@ tads:
 
 exec:
 	${IMPRIME} "compilando as aplicações e gerando os executáveis" DO
-	gcc ./apps/index.c ./obj/quicksort.o -I ./include/ -o ./bin/quicksort -fsanitize=undefined 
-	gcc ./apps/app_cor.c  ./obj/ec_rgb_colors.o   -I ./include/  -o ./bin/app_cor -fsanitize=undefined
+	gcc -c ./app/index.c ./obj/quicksort.o -I ./include/ -o ./bin/quicksort -fsanitize=undefined 
+	gcc ./apps/app_cor.c  ./obj/ec_rgb_colors.o   -I ./include/    -o ./bin/app_cor -fsanitize=undefined
 
 	@echo
 
@@ -37,7 +37,7 @@ run:
  
  _debug_tads:
 	@echo "compilando a aplicação e gerando o executável com opção de depuração" 
-	gcc -g ./apps/index.c  -I ./include/ ./obj/* -o ./src/debug/quicksort -fsanitize=undefined
+	gcc -g ./apps/index.c   -I ./include/ ./obj/*  -o ./src/debug/quicksort -fsanitize=undefined
 
 _debug_all:
 	@echo "compilando a aplicação e gerando o executável com opção de depuração completa" 
