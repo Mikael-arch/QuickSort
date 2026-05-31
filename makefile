@@ -6,7 +6,7 @@ all: clean tads exec _debug_tads _debug_all
 
 clean:
 	${IMPRIME} "excluindo os arquivos intermediários (código objeto)" VERMELHO
-	rm -f ./obj/hora.o
+	rm -f ./obj/quicksort.o
 
 	@echo 
 	${IMPRIME} "excluindo os arquivos executáveis" RED
@@ -22,13 +22,13 @@ clean:
 
 tads:
 	${IMPRIME} "compilando os tipos abstratos de dados" DO 
-	gcc -c ./src/hora.c -I ./include/ -o ./obj/hora.o
+	gcc -c ./src/quicksort.c -I ./include/ -o ./obj/quicksort.o
 	@echo
 
 exec:
 	${IMPRIME} "compilando as aplicações e gerando os executáveis" DO
-	gcc -c ./app/index.c ./obj/quicksort.o -I ./include/ -o ./bin/quicksort -fsanitize=undefined 
-	gcc ./apps/app_cor.c  ./obj/ec_rgb_colors.o   -I ./include/    -o ./bin/app_cor -fsanitize=undefined
+	gcc ./apps/index.c ./obj/quicksort.o -I ./include/ -o ./bin/quicksort -fsanitize=undefined 
+	gcc ./apps/app_cor.c  ./obj/ec_rgb_colors.o   -I ./include/  -o ./bin/app_cor -fsanitize=undefined
 
 	@echo
 
@@ -37,7 +37,7 @@ run:
  
  _debug_tads:
 	@echo "compilando a aplicação e gerando o executável com opção de depuração" 
-	gcc -g ./apps/index.c   -I ./include/ ./obj/*  -o ./src/debug/quicksort -fsanitize=undefined
+	gcc -g ./apps/index.c  -I ./include/ ./obj/* -o ./src/debug/quicksort -fsanitize=undefined
 
 _debug_all:
 	@echo "compilando a aplicação e gerando o executável com opção de depuração completa" 
