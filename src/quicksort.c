@@ -39,14 +39,15 @@ void quicksort(int *vetor, int inicial, int final)
     }
 }
 
-void bubblesort(int *vetor, int tamanho){
+void bubblesort (int *vetor, int tamanho) {
+    int k, j, aux;
 
-    for(int i = 0; i < tamanho - 1; i++){
-        for(int j = i; j< tamanho - i-1; j++){
-            if(vetor[j] > vetor[j+1]){
-                int temp = vetor[j];
-                vetor[j] = vetor[j + 1];
-                vetor[j + 1] = temp;
+    for (k = tamanho - 1; k > 0; k--) {
+        for (j = 0; j < k; j++) {
+            if (vetor[j] > vetor[j + 1]) {
+                aux  = vetor[j];
+                vetor[j]  = vetor[j + 1];
+                vetor[j + 1] = aux;
             }
         }
     }

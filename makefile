@@ -27,7 +27,7 @@ tads:
 
 exec:
 	${IMPRIME} "compilando as aplicações e gerando os executáveis" DO
-	gcc -c ./app/index.c ./obj/quicksort.o -I ./include/ -o ./bin/quicksort -fsanitize=undefined 
+	gcc ./apps/index.c ./obj/quicksort.o -I ./include/ -o ./bin/quicksort -fsanitize=undefined 
 	gcc ./apps/app_cor.c  ./obj/ec_rgb_colors.o   -I ./include/    -o ./bin/app_cor -fsanitize=undefined
 
 	@echo
